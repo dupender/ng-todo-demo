@@ -43,11 +43,48 @@
         </div>
         <div class="col-xs-12" ng-show="!showListView">
           <h1 >New Todo</h1>
+          <form>
+            <div class="form-group">
+              <label>Task Description</label>
+              <input type="text" class="form-control" placeholder="Some important task" ng-model="newTask.task"/>
+            </div>
+            <div class="form-group">
+              <label>Due Date</label>
+              <input type="text" class="form-control" placeholder="1/12/16" ng-model="newTask.dueDate"/>
+            </div>
+            <div class="form-group">
+              <label>Assigned To</label>
+              <input type="text" class="form-control" placeholder=" Bob Smith" ng-model="newTask.assignedTo"/>
+            </div>
+            <div class="form-group">
+              <label>Location</label>
+              <input type="text" class="form-control" placeholder="Nashville" ng-model="newTask.location"/>
+            </div>
+            <div class="form-group">
+              <label>Urgency</label>
+              <input type="text" class="form-control" placeholder="medium" ng-model="newTask.urgency"/>
+            </div>
+            <div class="form-group">
+              <label>Dependancies</label>
+              <input type="text" class="form-control" placeholder="vodka" ng-model="newTask.dependancies"/>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
 
+
+<!-- {
+        id: 0,
+        task:"mow the lawn",
+        isCompleted:true,
+        dueDate:"12/5/17"
+        assignedTo: "greg"
+        location: "zoe's house",
+        urgency: "low",
+        dependancies:["sunshine", "clippers", "hat", "water", "headphones"]
+      } -->
 
 
   <script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
