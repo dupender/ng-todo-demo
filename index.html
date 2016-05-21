@@ -28,9 +28,24 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
   <div ng-controller="TodoCtrl">
-    <h1 >Todo List</h1>
+    <div class="row">
+      
+    </div>
+    <div class="col-xs-6 col-xs-offset-3"> 
+      <button class="col-xs-6 btn btn-success" ng-click="newItem()">New Item</button>
+      <button class="col-xs-6 btn btn-info" ng-click="allItem()">All Items</button>
+    </div>
+    <div class="row" >
+      <div class="col-xs-10 col-xsoffset-1 main-container">
+        <div class="col-xs-12" ng-show="showListView">
+          <h1 >Todo List</h1>
+        </div>
+        <div class="col-xs-12" ng-show="!showListView">
+          <h1 >New Todo</h1>
+        </div>
+      </div>
+    </div>
   </div>
 
 
