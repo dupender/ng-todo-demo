@@ -3,6 +3,7 @@
 <head>
   <title>TO DO List</title>
   <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body ng-app = "TodoApp" class="bisque">
@@ -42,7 +43,12 @@
           <h1 >Todo List</h1>
           <div class="row">
             <div class="col-xs-8 col-xs-offset-3">
-              <input type="text" placeholder="Search for..." ng-model="searchText">
+              <div class="input-group">
+                <span class="input-group-btn">
+                <button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </span>
+               <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
+              </div>
             </div>
           </div>
           <div ng-repeat="thingy in items | filter:searchText">
@@ -90,9 +96,7 @@
         </div>
       </div>
     </div>
-  </div>
-
-
+ 
 <!-- {
         id: 0,
         task:"mow the lawn",
@@ -104,6 +108,7 @@
         dependancies:["sunshine", "clippers", "hat", "water", "headphones"]
       } -->
 
+ </div>
 
   <script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
