@@ -1,17 +1,14 @@
-app.controller("ItemViewCtrl", function($scope, $http, $routeParams){
+app.controller("ItemViewCtrl", function($scope, $http, $routeParams, itemStorage){
     $scope.items = [];
     $scope.selectedItem = {}; 
     console.log($routeParams.itemId);
 
-    $http.get("https://du-angular-todo.firebaseio.com/items.json")
-    .success(function(itemObject){
-      Object.keys(itemObject).forEach(function(key){
-        itemObject[key].id=key;
-        $scope.items.push(itemObject[key]);
+    itemStorage.getItemList().then(function(itemCollection){
+      console.log("itemCollection from promise", itemCollection);
+      $scope.items = itemCollection;
       
       $scope.selectedItem = $scope.items.filter(function(item){
-        return item.id ===$routeParams.itemId;
+        return item.id === $routeParams.itemId;
       })[0];
-    })
     })   
-})
+});
