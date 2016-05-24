@@ -1,0 +1,30 @@
+{   "items":{
+    "item0":{
+        "task":"mow the lawn",
+        "isCompleted":true,
+        "dueDate":"12/5/17",
+        "assignedTo": "greg",
+        "location": "zoe's house",
+        "urgency": "low",
+        "dependancies":"sunshine, clippers, hat, water, headphones"
+      },
+      "item1":{
+        "task":"grade quizzes",
+        "isCompleted":false,
+        "dueDate":"12/5/17",
+        "assignedTo": "jow",
+        "location": "NSS",
+        "urgency": "high",
+        "dependancies":"wifi, tissues, vodka"
+      },
+    "item2":{
+        "task":"take a nap",
+        "isCompleted":false,
+        "dueDate":"12/5/17",
+        "assignedTo": "zoe",
+        "location": "zoe's house",
+        "urgency": "low",
+        "dependancies":"hammock, vodka"
+      }
+    }
+}      
