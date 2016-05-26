@@ -1,4 +1,7 @@
 app.controller("ItemNewCtrl", function($scope, $http, $location, itemStorage){
+    $scope.title ="New Item";
+    $scope.submitButtonText = "Add New Item";
+
     $scope.newTask = {
       assignTo:"",
       dependancies:"",
