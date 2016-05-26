@@ -1,9 +1,9 @@
-app.factory("itemStorage", function($q, $http){
+app.factory("itemStorage", function($q, $http, firebaseURL){
 
   var getItemList = function(){
     var items = [];
     return $q(function(resolve, reject){
-    $http.get("https://du-angular-todo.firebaseio.com/items.json")
+    $http.get(firebaseURL+"items.json")
     .success(function(itemObject){
         // you don't really need itemCollection var now (got rid of itemObject.items)
         var itemCollection = itemObject;
@@ -26,7 +26,7 @@ app.factory("itemStorage", function($q, $http){
 var deleteItem = function(itemId){
     return $q(function(resolve, reject){
       $http
-        .delete(`https://du-angular-todo.firebaseio.com/items/${itemId}.json`)
+        .delete(firebaseURL+"items/"+itemId+".json")
         .success(function(objectFromFirebase){
           resolve(objectFromFirebase)
         })
@@ -36,7 +36,7 @@ var deleteItem = function(itemId){
 var postNewItem = function(newItem){
   return $q(function(resolve, reject){
     $http.post(
-      "https://du-angular-todo.firebaseio.com/items.json",
+      firebaseURL+"items.json",
       JSON.stringify({
         assignedTo: newItem.assignedTo,
         dependencies: newItem.dependencies,
