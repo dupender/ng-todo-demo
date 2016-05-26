@@ -89,6 +89,28 @@ var updateItem = function(itemId, newItem){
         });
     };
 
-  return{updateItem:updateItem, getItemList:getItemList, deleteItem:deleteItem, postNewItem:postNewItem, getSingleItem:getSingleItem}
+    var updateCompletedStatus = function(newItem){
+        return $q(function(resolve, reject) {
+            $http.put(
+                firebaseURL + "items/" + newItem.Id + ".json",
+                JSON.stringify({
+                    assignedTo: newItem.assignedTo,
+                    dependencies: newItem.dependencies,
+                    dueDate: newItem.dueDate,
+                    isCompleted: newItem.isCompleted,
+                    location: newItem.location,
+                    task: newItem.task,
+                    urgency: newItem.urgency
+                })
+            )
+            .success(
+                function(objectFromFirebase) {
+                    resolve(objectFromFirebase);
+                }
+            );
+        });
+    };
+
+  return{updateCompletedStatus:updateCompletedStatus, updateItem:updateItem, getItemList:getItemList, deleteItem:deleteItem, postNewItem:postNewItem, getSingleItem:getSingleItem}
 })
 
