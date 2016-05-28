@@ -1,9 +1,10 @@
-app.factory("itemStorage", function($q, $http, firebaseURL){
+app.factory("itemStorage", function($q, $http, firebaseURL, authFactory){
 
   var getItemList = function(){
     var items = [];
+    let user = authFactory.getUser();
     return $q(function(resolve, reject){
-    $http.get(firebaseURL+"items.json")
+    $http.get(`${firebaseURL}items.json?orderBy="uid"&equalTo="${user.uid}"`)
     .success(function(itemObject){
         // you don't really need itemCollection var now (got rid of itemObject.items)
         var itemCollection = itemObject;
@@ -34,6 +35,8 @@ var deleteItem = function(itemId){
 }
 
 var postNewItem = function(newItem){
+  let user = authFactory.getUser();
+  console.log("user",user );
   return $q(function(resolve, reject){
     $http.post(
       firebaseURL+"items.json",
@@ -44,7 +47,8 @@ var postNewItem = function(newItem){
         isCompleted:newItem.isCompleted,
         location: newItem.location,
         task: newItem.task,
-        urgency: newItem.urgency
+        urgency: newItem.urgency,
+        uid:user.uid
       })
       )
       .success(
@@ -68,6 +72,7 @@ var postNewItem = function(newItem){
 }
 
 var updateItem = function(itemId, newItem){
+        let user = authFactory.getUser();
         return $q(function(resolve, reject) {
             $http.put(
                 firebaseURL + "items/" + itemId + ".json",
@@ -78,7 +83,8 @@ var updateItem = function(itemId, newItem){
                     isCompleted: newItem.isCompleted,
                     location: newItem.location,
                     task: newItem.task,
-                    urgency: newItem.urgency
+                    urgency: newItem.urgency,
+                    uid:user.uid
                 })
             )
             .success(
@@ -90,6 +96,7 @@ var updateItem = function(itemId, newItem){
     };
 
     var updateCompletedStatus = function(newItem){
+        let user = authFactory.getUser();
         return $q(function(resolve, reject) {
             $http.put(
                 firebaseURL + "items/" + newItem.Id + ".json",
@@ -100,7 +107,8 @@ var updateItem = function(itemId, newItem){
                     isCompleted: newItem.isCompleted,
                     location: newItem.location,
                     task: newItem.task,
-                    urgency: newItem.urgency
+                    urgency: newItem.urgency,
+                    uid: user.uid
                 })
             )
             .success(
