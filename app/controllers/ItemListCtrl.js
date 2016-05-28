@@ -34,8 +34,8 @@ app.controller("ItemListCtrl", function($scope, $http, $location, itemStorage){
 
     $scope.inputChange = function(item){
       itemStorage.updateCompletedStatus(item)
-        .then(function(response{
+        .then(function(response){
           console.log("response",response );
-        }))
+        })
     }
 });
